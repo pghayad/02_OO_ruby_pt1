@@ -1,4 +1,4 @@
-PIZZA = [] # why are we doing this?
+PIZZAS = []
 
 def init
   puts "Welcome to the lean, mean Pizza Machine App!"
@@ -22,14 +22,20 @@ def menu_options
 end 
 
 def menu_selection
-  # Need to add some control flow based on users menu selection
-  while selection != 'exit'
-    if selection == "1"
-      puts "user selected 1"
-      create_pizza
-    elsif selection == "2"
+  selection = gets.strip
 
+  while selection != "exit"
+    if selection == "1"
+      pizza = create_pizza
+      PIZZAS << pizza
+      pizza_details(pizza)
+    elsif selection == "2"
+      pizza_list
+    else
+      puts "Um, looks like something went wrong. Try again: "
     end 
+    menu_options
+    selection = gets.strip
   end 
 end 
 
@@ -41,13 +47,26 @@ def create_pizza
   puts "Describe this pizza: "
   desc = gets.strip 
 
-  # need to return a pizza hash
+  pizza = {
+    name: name,
+    toppings: toppings,
+    desc: desc
+  }
 end 
 
-# Currently there is not a method to print the list of created pizzas. In order to complete this:
-# 1. Think about a way to store and save the pizzas a user creates
-# 2. How can this collection be used to print a list of all of the stored pizzas
+def pizza_details(pizza)
+  puts ""
+  puts "Name: #{pizza[:name]}"
+  puts "Toppings: #{pizza[:toppings]}"
+  puts "Desc: #{pizza[:desc]}"
+  puts ""
+end 
+
+def pizza_list 
+  PIZZAS.each do |pizza|
+    pizza_details(pizza)
+  end
 
 def goodbye
-  puts "Come back when you get hungry!!!"
-end 
+  puts "Hopefully we'll see you back soon!"
+end  
