@@ -39,14 +39,18 @@ end
 
 def create_starship
   puts "Name of starship, get creative!"
-  name = gets.strip 
+  name = gets.strip # local variables
   puts "Whats the model?"
   model = gets.strip 
 
-  starship = {
-    name: name,
-    model: model
-  }
+  # create a new starship hash but this was before we OO
+  # starship = {
+  #   name: name,
+  #   model: model
+  # }
+
+  starship = Starship.new(name, model)
+  binding.pry
 end 
 
 
