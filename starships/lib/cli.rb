@@ -39,9 +39,9 @@ end
 
 def create_starship
   puts "Name of starship, get creative!"
-  name = gets.strip 
+  name = gets.strip   #local variable
   puts "Whats the model?"
-  model = gets.strip 
+  model = gets.strip  #local variable
 
   starship = {
     name: name,
